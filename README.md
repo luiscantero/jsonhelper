@@ -12,6 +12,7 @@
 * GZIP compress
 * GZIP decompress
 * Paste from and copy to clipboard
+* Drag & drop file to input box
 
 ### License
 [MIT](http://opensource.org/licenses/MIT)
