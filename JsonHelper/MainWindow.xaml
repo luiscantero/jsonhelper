@@ -21,7 +21,7 @@
         <TextBlock x:Name="InputLabel" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5,5">Input (0 bytes)</TextBlock>
         <Button Click="InputFromClipboard_Click" Grid.Row="0" Grid.Column="1" Margin="5,5" HorizontalAlignment="Right" Height="25" Width="120">Paste from Clipboard</Button>
 
-        <TextBox x:Name="InputBox" Grid.Row="1" Grid.ColumnSpan="2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextChanged="InputBox_TextChanged"/>
+        <TextBox x:Name="InputBox" Grid.Row="1" Grid.ColumnSpan="2" TextWrapping="Wrap" AcceptsReturn="True" AllowDrop="True" VerticalScrollBarVisibility="Visible" TextChanged="InputBox_TextChanged" PreviewDragOver="InputBox_PreviewDragOver" PreviewDrop="InputBox_PreviewDrop"/>
 
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="5,10">
             <StackPanel>

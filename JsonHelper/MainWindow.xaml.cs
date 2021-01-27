@@ -6,6 +6,7 @@
 using JsonHelper.Extensions;
 using System;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -345,6 +346,33 @@ namespace JsonHelper
                     button.Background = ButtonBackgroundGray;
                 });
             }, state: null, dueTime: 1000, period: 0); // ms.
+        }
+
+        private void InputBox_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effects = DragDropEffects.Copy;
+                e.Handled = true;
+            }
+        }
+
+        private async void InputBox_PreviewDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            if (files != null && files.Length > 0)
+            {
+                try
+                {
+                    // Read first file.
+                    InputBox.Text = await File.ReadAllTextAsync(files[0]);
+                }
+                catch (Exception ex)
+                {
+                    InputBox.Text = ex.Message;
+                }
+            }
         }
     }
 }
