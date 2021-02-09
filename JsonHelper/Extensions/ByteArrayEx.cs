@@ -10,7 +10,7 @@ namespace JsonHelper.Extensions
     public static class ByteArrayEx
     {
         /// <summary>
-        /// Zip string to byte array
+        /// Zip byte array to byte array
         /// </summary>
         public static byte[] Zip(this byte[] str)
         {
@@ -19,7 +19,7 @@ namespace JsonHelper.Extensions
         }
 
         /// <summary>
-        /// Unzip from byte array to string
+        /// Unzip byte array to string
         /// </summary>
         public static byte[] Unzip(this byte[] bytes)
         {

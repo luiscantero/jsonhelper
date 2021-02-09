@@ -24,7 +24,7 @@ namespace JsonHelper.Extensions
         }
 
         /// <summary>
-        /// Unzip byte array
+        /// Unzip stream to byte array
         /// </summary>
         public static byte[] Unzip(this Stream input)
         {
