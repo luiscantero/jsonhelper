@@ -24,6 +24,7 @@ namespace JsonHelper
     public partial class MainWindow : Window
     {
         private readonly Brush ButtonBackgroundGray = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDDDDDD"));
+        private Timer _copyBackgroundResetTimer;
 
         public MainWindow()
         {
@@ -339,7 +340,7 @@ namespace JsonHelper
             button.Background = new SolidColorBrush(Colors.LightGreen);
 
             // Restore background color after a while.
-            _ = new Timer(async state =>
+            _copyBackgroundResetTimer = new Timer(async state =>
             {
                 await Dispatcher.InvokeAsync(() =>
                 {
