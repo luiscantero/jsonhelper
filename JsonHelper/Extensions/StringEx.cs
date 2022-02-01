@@ -5,17 +5,16 @@
 
 using System.Text;
 
-namespace JsonHelper.Extensions
+namespace JsonHelper.Extensions;
+
+public static class StringEx
 {
-    public static class StringEx
+    /// <summary>
+    /// Zip string to string
+    /// </summary>
+    public static string Zip(this string str)
     {
-        /// <summary>
-        /// Zip string to string
-        /// </summary>
-        public static string Zip(this string str)
-        {
-            byte[] gzipBytes = Encoding.UTF8.GetBytes(str).Zip();
-            return Encoding.UTF8.GetString(gzipBytes);
-        }
+        byte[] gzipBytes = Encoding.UTF8.GetBytes(str).Zip();
+        return Encoding.UTF8.GetString(gzipBytes);
     }
 }

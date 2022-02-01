@@ -5,28 +5,27 @@
 
 using System.IO;
 
-namespace JsonHelper.Extensions
-{
-    public static class ByteArrayEx
-    {
-        /// <summary>
-        /// Zip byte array to byte array
-        /// </summary>
-        public static byte[] Zip(this byte[] str)
-        {
-            using var input = new MemoryStream(str);
-            return input.Zip();
-        }
+namespace JsonHelper.Extensions;
 
-        /// <summary>
-        /// Unzip byte array to string
-        /// </summary>
-        public static byte[] Unzip(this byte[] bytes)
+public static class ByteArrayEx
+{
+    /// <summary>
+    /// Zip byte array to byte array
+    /// </summary>
+    public static byte[] Zip(this byte[] str)
+    {
+        using var input = new MemoryStream(str);
+        return input.Zip();
+    }
+
+    /// <summary>
+    /// Unzip byte array to string
+    /// </summary>
+    public static byte[] Unzip(this byte[] bytes)
+    {
+        using (var input = new MemoryStream(bytes))
         {
-            using (var input = new MemoryStream(bytes))
-            {
-                return input.Unzip();
-            }
+            return input.Unzip();
         }
     }
 }

@@ -6,36 +6,35 @@
 using System.IO;
 using System.IO.Compression;
 
-namespace JsonHelper.Extensions
-{
-    public static class StreamEx
-    {
-        /// <summary>
-        /// Zip stream to byte array
-        /// </summary>
-        public static byte[] Zip(this Stream input)
-        {
-            using var result = new MemoryStream();
-            using (var gs = new GZipStream(result, CompressionMode.Compress))
-            {
-                input.CopyTo(gs);
-            }
-            return result.ToArray();
-        }
+namespace JsonHelper.Extensions;
 
-        /// <summary>
-        /// Unzip stream to byte array
-        /// </summary>
-        public static byte[] Unzip(this Stream input)
+public static class StreamEx
+{
+    /// <summary>
+    /// Zip stream to byte array
+    /// </summary>
+    public static byte[] Zip(this Stream input)
+    {
+        using var result = new MemoryStream();
+        using (var gs = new GZipStream(result, CompressionMode.Compress))
         {
-            using (var output = new MemoryStream())
+            input.CopyTo(gs);
+        }
+        return result.ToArray();
+    }
+
+    /// <summary>
+    /// Unzip stream to byte array
+    /// </summary>
+    public static byte[] Unzip(this Stream input)
+    {
+        using (var output = new MemoryStream())
+        {
+            using (var gs = new GZipStream(input, CompressionMode.Decompress))
             {
-                using (var gs = new GZipStream(input, CompressionMode.Decompress))
-                {
-                    gs.CopyTo(output);
-                }
-                return output.ToArray();
+                gs.CopyTo(output);
             }
+            return output.ToArray();
         }
     }
 }
