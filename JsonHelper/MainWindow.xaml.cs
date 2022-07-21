@@ -25,6 +25,7 @@ public partial class MainWindow : Window
 {
     private readonly Brush ButtonBackgroundGray = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDDDDDD"));
     private Timer _copyBackgroundResetTimer;
+    private int _rawLength;
 
     public MainWindow()
     {
@@ -38,6 +39,7 @@ public partial class MainWindow : Window
     private void Beautify_Click(object sender, RoutedEventArgs e)
     {
         string result;
+        _rawLength = 0;
 
         try
         {
@@ -60,6 +62,7 @@ public partial class MainWindow : Window
     private void Minify_Click(object sender, RoutedEventArgs e)
     {
         string result;
+        _rawLength = 0;
 
         try
         {
@@ -82,6 +85,7 @@ public partial class MainWindow : Window
     private void JSEncode_Click(object sender, RoutedEventArgs e)
     {
         string result;
+        _rawLength = 0;
 
         try
         {
@@ -108,6 +112,7 @@ public partial class MainWindow : Window
     private void JSDecode_Click(object sender, RoutedEventArgs e)
     {
         string result;
+        _rawLength = 0;
 
         try
         {
@@ -130,12 +135,14 @@ public partial class MainWindow : Window
     private void Base64Encode_Click(object sender, RoutedEventArgs e)
     {
         string result;
+        _rawLength = 0;
 
         try
         {
             PasteIfEmpty();
 
             string minified = Minify(InputBox.Text);
+            _rawLength = minified.Length;
 
             result = Convert.ToBase64String(Encoding.UTF8.GetBytes(minified));
         }
@@ -154,6 +161,7 @@ public partial class MainWindow : Window
     private void Base64Decode_Click(object sender, RoutedEventArgs e)
     {
         string result;
+        _rawLength = 0;
 
         try
         {
@@ -176,6 +184,7 @@ public partial class MainWindow : Window
     private void GzipCompress_Click(object sender, RoutedEventArgs e)
     {
         string result;
+        _rawLength = 0;
 
         try
         {
@@ -184,6 +193,7 @@ public partial class MainWindow : Window
             string minified = Minify(InputBox.Text);
 
             byte[] inputCompressed = Encoding.UTF8.GetBytes(minified).Zip();
+            _rawLength = inputCompressed.Length;
 
             result = Convert.ToBase64String(inputCompressed);
         }
@@ -202,6 +212,7 @@ public partial class MainWindow : Window
     private void GzipDecompress_Click(object sender, RoutedEventArgs e)
     {
         string result;
+        _rawLength = 0;
 
         try
         {
@@ -225,9 +236,11 @@ public partial class MainWindow : Window
     /// </summary>
     private void Swap_Click(object sender, RoutedEventArgs e)
     {
-        string temp = InputBox.Text;
+        _rawLength = 0;
+
+        string input = InputBox.Text;
         InputBox.Text = OutputBox.Text;
-        OutputBox.Text = temp;
+        OutputBox.Text = input;
     }
 
     private static string Beautify(string input)
@@ -316,7 +329,14 @@ public partial class MainWindow : Window
 
     private void OutputBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        OutputLabel.Text = $"Output ({OutputBox.Text.Length:N0} bytes)";
+        if (_rawLength > 0)
+        {
+            OutputLabel.Text = $"Output ({OutputBox.Text.Length:N0} bytes | {_rawLength} bytes without Base64 encoding)";
+        }
+        else
+        {
+            OutputLabel.Text = $"Output ({OutputBox.Text.Length:N0} bytes)";
+        }
     }
 
     private void InputFromClipboard_Click(object sender, RoutedEventArgs e)
