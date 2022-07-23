@@ -25,7 +25,7 @@
 
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="5,10">
             <StackPanel>
-                <Button Click="Beautify_Click">JSON Beautify</Button>
+                <Button Click="Prettify_Click">JSON Prettify</Button>
                 <Button Click="Minify_Click">JSON Minify</Button>
             </StackPanel>
             <StackPanel>

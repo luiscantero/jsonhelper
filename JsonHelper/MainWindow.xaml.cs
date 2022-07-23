@@ -36,7 +36,7 @@ public partial class MainWindow : Window
     /// Pretty print JSON.
     /// Use text from clipboard if input box is empty.
     /// </summary>
-    private void Beautify_Click(object sender, RoutedEventArgs e)
+    private void Prettify_Click(object sender, RoutedEventArgs e)
     {
         string result;
         _rawLength = 0;
@@ -45,7 +45,7 @@ public partial class MainWindow : Window
         {
             PasteIfEmpty();
 
-            result = Beautify(InputBox.Text);
+            result = Prettify(InputBox.Text);
         }
         catch (Exception ex)
         {
@@ -106,7 +106,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// JavaScript-decode and beautify JSON.
+    /// JavaScript-decode and prettify JSON.
     /// Use text from clipboard if input box is empty.
     /// </summary>
     private void JSDecode_Click(object sender, RoutedEventArgs e)
@@ -118,7 +118,7 @@ public partial class MainWindow : Window
         {
             PasteIfEmpty();
 
-            result = Beautify(JavaScriptStringDecode(InputBox.Text));
+            result = Prettify(JavaScriptStringDecode(InputBox.Text));
         }
         catch (Exception ex)
         {
@@ -155,7 +155,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Base64-decode and beautify JSON.
+    /// Base64-decode and prettify JSON.
     /// Use text from clipboard if input box is empty.
     /// </summary>
     private void Base64Decode_Click(object sender, RoutedEventArgs e)
@@ -167,7 +167,7 @@ public partial class MainWindow : Window
         {
             PasteIfEmpty();
 
-            result = Beautify(Encoding.UTF8.GetString(Convert.FromBase64String(InputBox.Text)));
+            result = Prettify(Encoding.UTF8.GetString(Convert.FromBase64String(InputBox.Text)));
         }
         catch (Exception ex)
         {
@@ -206,7 +206,7 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Base64-decode, GZIP-decompress and beautify JSON.
+    /// Base64-decode, GZIP-decompress and prettify JSON.
     /// Use text from clipboard if input box is empty.
     /// </summary>
     private void GzipDecompress_Click(object sender, RoutedEventArgs e)
@@ -220,7 +220,7 @@ public partial class MainWindow : Window
 
             byte[] inputDecompressed = Convert.FromBase64String(InputBox.Text).Unzip();
 
-            result = Beautify(Encoding.UTF8.GetString(inputDecompressed));
+            result = Prettify(Encoding.UTF8.GetString(inputDecompressed));
 
         }
         catch (Exception ex)
@@ -243,7 +243,7 @@ public partial class MainWindow : Window
         OutputBox.Text = input;
     }
 
-    private static string Beautify(string input)
+    private static string Prettify(string input)
     {
         string cleaned = CleanInput(input);
         var deserialized = JsonSerializer.Deserialize<object>(cleaned);

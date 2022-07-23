@@ -1,9 +1,9 @@
 # JsonHelper
 ## Description
-* Visual Studio 2019, .NET Core 3.1, WPF C# application to format, encode and decode JSON.
+* Visual Studio 2022, .NET 6, WPF C# application to format, encode and decode JSON.
 
 ## Features
-* JSON beautify
+* JSON prettify
 * JSON minify
 * JavaScript encode
 * JavaScript decode
