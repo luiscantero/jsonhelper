@@ -252,19 +252,19 @@ public partial class MainWindow : Window
         {
             WriteIndented = true,
 
-            // Both options currently don't work when serializing/deserializing object.
+            // Both options currently don't work (as of .NET 6) when serializing/deserializing object.
             //PropertyNamingPolicy = UseCamelCase.IsChecked ?? true
             //    ? JsonNamingPolicy.CamelCase
             //    : null,
-            //IgnoreNullValues = IgnoreNullValues.IsChecked ?? true
-            //    ? true
-            //    : false,
+            //DefaultIgnoreCondition = IgnoreNullValues.IsChecked ?? true
+            //    ? JsonIgnoreCondition.WhenWritingNull
+            //    : JsonIgnoreCondition.Never,
         };
 
         return JsonSerializer.Serialize(deserialized, options);
     }
 
-    private static string Minify(string input)
+    private string Minify(string input)
     {
         string cleaned = CleanInput(input);
         var deserialized = JsonSerializer.Deserialize<object>(cleaned);
@@ -273,13 +273,13 @@ public partial class MainWindow : Window
         {
             WriteIndented = false,
 
-            // Both options currently don't work when serializing/deserializing object.
+            // Both options currently don't work (as of .NET 6) when serializing/deserializing object.
             //PropertyNamingPolicy = UseCamelCase.IsChecked ?? true
             //    ? JsonNamingPolicy.CamelCase
             //    : null,
-            //IgnoreNullValues = IgnoreNullValues.IsChecked ?? true
-            //    ? true
-            //    : false,
+            //DefaultIgnoreCondition = IgnoreNullValues.IsChecked ?? true
+            //    ? JsonIgnoreCondition.WhenWritingNull
+            //    : JsonIgnoreCondition.Never,
         };
 
         return JsonSerializer.Serialize(deserialized, options);
