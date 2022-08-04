@@ -285,7 +285,7 @@ public partial class MainWindow : Window
         return JsonSerializer.Serialize(deserialized, options);
     }
 
-    public static string JavaScriptStringDecode(string input)
+    private static string JavaScriptStringDecode(string input)
     {
         // Replace some chars.
         var decoded = input.Replace(@"\'", "'")
@@ -295,13 +295,13 @@ public partial class MainWindow : Window
                            .Replace(@"\t", "\t")
                            .Replace(@"\n", "\n");
 
-        // Replace unicode escaped text.
+        // Replace unicode-escaped text.
         var regex = new Regex(@"\\[uU]([0-9A-F]{4})");
 
         decoded = regex.Replace(
                 decoded,
-                match => ((char)int.Parse(match.Value[2..], NumberStyles.HexNumber)
-            ).ToString(CultureInfo.InvariantCulture));
+                match => ((char)int.Parse(match.Value[2..], NumberStyles.HexNumber))
+                .ToString(CultureInfo.InvariantCulture));
 
         return decoded;
     }
