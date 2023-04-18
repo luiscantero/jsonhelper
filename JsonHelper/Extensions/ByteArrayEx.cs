@@ -3,9 +3,9 @@
 //  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.IO;
-
 namespace JsonHelper.Extensions;
+
+using System.IO;
 
 public static class ByteArrayEx
 {

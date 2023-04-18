@@ -3,10 +3,10 @@
 //  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
 // ------------------------------------------------------------
 
+namespace JsonHelper.Extensions;
+
 using System.IO;
 using System.IO.Compression;
-
-namespace JsonHelper.Extensions;
 
 public static class StreamEx
 {

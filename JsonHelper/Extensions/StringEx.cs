@@ -3,9 +3,9 @@
 //  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Text;
-
 namespace JsonHelper.Extensions;
+
+using System.Text;
 
 public static class StringEx
 {

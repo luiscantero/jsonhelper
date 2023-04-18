@@ -3,6 +3,8 @@
 //  Licensed under the MIT License (MIT). See License.txt in the repo root for license information.
 // ------------------------------------------------------------
 
+namespace JsonHelper;
+
 using JsonHelper.Extensions;
 using System;
 using System.Globalization;
@@ -15,8 +17,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
-namespace JsonHelper;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
