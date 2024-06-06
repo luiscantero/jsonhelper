@@ -41,7 +41,7 @@
                 <Button Click="GzipDecompress_Click">GZIP decompress</Button>
             </StackPanel>
 
-            <!--Both options currently don't work (as of .NET 6) when serializing/deserializing object-->
+            <!--Both options currently don't work (as of .NET 8) when serializing/deserializing object-->
             <!--<CheckBox x:Name="UseCamelCase" IsChecked="True">Use camelCase</CheckBox>
             <CheckBox x:Name="IgnoreNullValues" IsChecked="True">Ignore null values</CheckBox>-->
             <WrapPanel.Resources>

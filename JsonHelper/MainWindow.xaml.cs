@@ -252,7 +252,7 @@ public partial class MainWindow : Window
         {
             WriteIndented = true,
 
-            // Both options currently don't work (as of .NET 6) when serializing/deserializing object.
+            // Both options currently don't work (as of .NET 8) when serializing/deserializing object.
             //PropertyNamingPolicy = UseCamelCase.IsChecked ?? true
             //    ? JsonNamingPolicy.CamelCase
             //    : null,
